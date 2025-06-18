@@ -1,67 +1,236 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quesito</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #4b1c5d, #6d0a3a);
-      color: #f0d8ec;
-      text-align: center;
-    }
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Quesito ❤️‍🔥</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-    header {
-      padding: 2rem;
-      background: rgba(109, 10, 58, 0.85);
-      font-size: 2rem;
-      font-weight: bold;
-      color: #ffffff;
-      text-shadow: 1px 1px 4px #000;
-    }
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			font-family: 'Segoe UI', sans-serif;
+			background: linear-gradient(135deg, #4b1c5d, #6d0a3a);
+			color: #f0d8ec;
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+		}
 
-    .image-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem 1rem;
-    }
+		header {
+			flex: 0 0 auto;
+			padding: 1.5rem;
+			background: rgba(109, 10, 58, 0.85);
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: #ffffff;
+			text-shadow: 1px 1px 4px #000;
+		}
 
-    .image-container img {
-      width: 100%;
-      max-width: 650px;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(255, 102, 153, 0.8);
-      border: 3px solid #b30469;
-      transition: transform 0.3s ease;
-    }
+		.image-container {
+			flex: 1 1 auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 1rem;
+		}
 
-    .image-container img:hover {
-      transform: scale(1.02);
-    }
+		/*.image-container img {
+			width: 100%;
+			max-width: 600px;
+			height: auto;
+			border-radius: 1rem;
+			box-shadow: 0 0 20px rgba(255, 102, 153, 0.8);
+			border: 3px solid #b30469;
+			transition: transform 0.3s ease;
+		}*/
 
-    @media (max-width: 768px) {
-      header {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+		.image-container img:hover {
+			transform: scale(1.02);
+		}
+
+		footer {
+			flex: 0 0 auto;
+			padding: 1rem 0.5rem;
+			background-color: rgba(75, 28, 93, 0.8);
+			text-shadow: 0 0 8px rgba(255, 102, 153, 0.9);
+		}
+
+		.heartbeat {
+			font-size: 1.3rem;
+			animation: heartbeat 1.5s infinite;
+			color: #ffd6f2;
+		}
+
+		.phrase {
+			margin-top: 0.3rem;
+			font-size: 1rem;
+			font-style: italic;
+			color: #ffc2e2;
+		}
+
+		@keyframes heartbeat {
+
+			0%,
+			100% {
+				transform: scale(1);
+				text-shadow: 0 0 8px rgba(255, 102, 153, 0.9);
+			}
+
+			50% {
+				transform: scale(1.08);
+				text-shadow: 0 0 16px rgba(255, 102, 153, 1);
+			}
+		}
+
+		@media (max-width: 768px) {
+			header {
+				font-size: 1.4rem;
+			}
+
+			.heartbeat {
+				font-size: 1rem;
+			}
+
+			.phrase {
+				font-size: 0.9rem;
+			}
+		}
+
+		.heart-container {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			overflow: hidden;
+			top: 0;
+			left: 0;
+			z-index: 0;
+		}
+
+		.heart {
+			position: absolute;
+			color: #ffb6c1;
+			font-size: 1rem;
+			animation: float 6s linear infinite;
+			opacity: 0.7;
+		}
+
+		@keyframes float {
+			0% {
+				transform: translateY(100vh) scale(1);
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				transform: translateY(-10vh) scale(1.2);
+				opacity: 0;
+			}
+		}
+
+		.image-overlay {
+			position: relative;
+			display: inline-block;
+			max-width: 650px;
+			width: 100%;
+		}
+
+		.image-overlay img {
+			display: block;
+			width: 100%;
+			height: auto;
+			border-radius: 1rem;
+			box-shadow: 0 0 20px rgba(255, 102, 153, 0.8);
+			border: 3px solid #b30469;
+		}
+
+		.message-text {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			color: #fff0f5;
+			background: rgba(0, 0, 0, 0.4);
+			font-size: 1rem;
+			padding: 1rem;
+			border-radius: 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			backdrop-filter: blur(2px);
+			font-weight: 500;
+			line-height: 1.5;
+			text-shadow: 0 0 8px rgba(255, 102, 153, 0.9), 0 0 12px rgba(255, 102, 153, 0.8);
+		}
+	</style>
 </head>
+
 <body>
-  <header>Te amo quesito❤️‍🔥</header>
+	<header>Para Siempre Quesito y Yo ❤️‍🔥</header>
 
-  <div class="image-container">
+	<!--<div class="image-container">
     <img id="romanticImage" src="picture1.jpg" alt="Imagen romántica destacada" />
-  </div>
+  </div>-->
 
-  <script>
-    const image = document.getElementById('romanticImage');
-    image.addEventListener('click', () => {
-      image.src = 'picture1.jpg';
-    });
-  </script>
+	<div class="image-container">
+		<div class="image-overlay">
+			<img id="romanticImage" src="paisaje-romantico.png" alt="Imagen romántica destacada" />
+			<div class="message-text">
+				Mi amor, hoy celebramos 1 año y medio de compartir momentos, risas y sueños juntos. Cada día a tu lado
+				es un regalo que me llena de felicidad y me hace sentir el hombre más afortunado del mundo. Gracias por
+				ser mi compañera, mi amiga y mi inspiración. Te amo más de lo que las palabras pueden expresar, y no
+				puedo esperar para seguir construyendo nuestra historia juntos. ¡Feliz aniversario, mi vida!
+			</div>
+		</div>
+	</div>
+
+
+	<footer>
+		<div class="heartbeat">18 Enero 2024</div>
+		<div class="phrase">"Donde termina el tiempo, empieza nuestro amor."</div>
+	</footer>
+
+	<div class="heart-container"></div>
+
+	<script>
+		const image = document.getElementById('romanticImage');
+		image.addEventListener('click', () => {
+			image.src = 'https://placekitten.com/821/421';
+		});
+
+		const container = document.querySelector('.heart-container');
+
+		function createHeart() {
+			const heart = document.createElement('div');
+			heart.classList.add('heart');
+			heart.innerText = '❤️';
+
+			heart.style.left = Math.random() * 100 + 'vw';
+			heart.style.fontSize = (Math.random() * 10 + 10) + 'px';
+			heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+			container.appendChild(heart);
+
+			setTimeout(() => {
+				heart.remove();
+			}, 6000);
+		}
+
+		setInterval(createHeart, 500);
+	</script>
 </body>
+
 </html>
