@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quesito</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #4b1c5d, #6d0a3a);
+      color: #f0d8ec;
+      text-align: center;
+    }
+
+    header {
+      padding: 2rem;
+      background: rgba(109, 10, 58, 0.85);
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    .image-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .image-container img {
+      width: 100%;
+      max-width: 650px;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(255, 102, 153, 0.8);
+      border: 3px solid #b30469;
+      transition: transform 0.3s ease;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>Te amo quesito❤️‍🔥</header>
+
+  <div class="image-container">
+    <img id="romanticImage" src="picture1.jpg" alt="Imagen romántica destacada" />
+  </div>
+
+  <script>
+    const image = document.getElementById('romanticImage');
+    image.addEventListener('click', () => {
+      image.src = 'picture1.jpg';
+    });
+  </script>
+</body>
+</html>
