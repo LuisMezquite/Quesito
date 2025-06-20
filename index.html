@@ -176,6 +176,17 @@
 			line-height: 1.5;
 			text-shadow: 0 0 8px rgba(255, 102, 153, 0.9), 0 0 12px rgba(255, 102, 153, 0.8);
 		}
+
+		.cursor {
+			animation: blink 1s step-start infinite;
+			margin-left: 0.2rem;
+		}
+
+		@keyframes blink {
+			50% {
+				opacity: 0;
+			}
+		}
 	</style>
 </head>
 
@@ -190,10 +201,7 @@
 		<div class="image-overlay">
 			<img id="romanticImage" src="paisaje-romantico.png" alt="Imagen romántica destacada" />
 			<div class="message-text">
-				Mi amor, hoy celebramos 1 año y medio de compartir momentos, risas y sueños juntos. Cada día a tu lado
-				es un regalo que me llena de felicidad y me hace sentir el hombre más afortunado del mundo. Gracias por
-				ser mi compañera, mi amiga y mi inspiración. Te amo más de lo que las palabras pueden expresar, y no
-				puedo esperar para seguir construyendo nuestra historia juntos. ¡Feliz aniversario, mi vida!
+				<span id="typed-text"></span><span class="cursor">❤️</span>
 			</div>
 		</div>
 	</div>
@@ -201,7 +209,7 @@
 
 	<footer>
 		<div class="heartbeat">18 Enero 2024</div>
-		<div class="phrase">"Eres mi razón de sonreír cada día"</div>
+		<div class="phrase">"Donde termina el tiempo, empieza nuestro amor."</div>
 	</footer>
 
 	<div class="heart-container"></div>
@@ -209,7 +217,7 @@
 	<script>
 		const image = document.getElementById('romanticImage');
 		image.addEventListener('click', () => {
-			image.src = 'https://placekitten.com/821/421';
+			image.src = 'paisaje-romantico.png';
 		});
 
 		const container = document.querySelector('.heart-container');
@@ -230,6 +238,40 @@
 		}
 
 		setInterval(createHeart, 500);
+		//////
+
+		const message = `Mi amor, hoy celebramos 1 año y medio de compartir momentos, risas y sueños juntos. Cada día a tu lado es un regalo que me llena de felicidad y me hace sentir el hombre más afortunado del mundo. Gracias por ser mi compañera, mi amiga y mi inspiración. Te amo más de lo que las palabras pueden expresar, y no puedo esperar para seguir construyendo nuestra historia juntos. ¡Feliz aniversario, mi vida!`;
+
+			const typedText = document.getElementById("typed-text");
+			const cursor = document.querySelector(".cursor");
+			let index = 0;
+
+			function type() {
+				if (index < message.length) {
+					typedText.textContent += message.charAt(index);
+					if (message.charAt(index) !== " ") createFloatingHeart();
+					index++;
+					setTimeout(type, 80); // o el valor que más te guste
+				} else {
+					cursor.style.display = "none";
+				}
+			}
+
+		function createFloatingHeart() {
+			const heart = document.createElement("div");
+			heart.classList.add("heart");
+			heart.innerText = "💖";
+			heart.style.left = Math.random() * 100 + "vw";
+			heart.style.fontSize = (Math.random() * 10 + 14) + "px";
+			heart.style.animationDuration = (Math.random() * 2 + 4) + "s";
+			document.querySelector(".heart-container").appendChild(heart);
+			setTimeout(() => {
+				heart.remove();
+			}, 6000);
+		}
+
+		// Espera a que cargue todo para iniciar la animación
+		window.addEventListener("load", type);		
 	</script>
 </body>
 
